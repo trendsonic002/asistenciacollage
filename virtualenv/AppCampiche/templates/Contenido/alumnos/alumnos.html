@@ -1,0 +1,80 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i>
+            Lista de Alumnos
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width='100%' id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                  	<th>Rut</th>
+                    <th>Nombres</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Curso</th>
+                    <th>Sección</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Rut</th>
+                    <th>Nombres</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Curso</th>
+                    <th>Sección</th>
+                    <th>Acción</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                	{% for datos in row %}
+                	<tr>
+                		<td>{{ datos.4 }}</td>
+                		<td>{{ datos.1 }}</td>
+                		<td>{{ datos.2 }}</td>
+                		<td>{{ datos.3 }}</td>
+                		<td>{{ datos.5 }}</td>
+                		<td>{{ datos.6 }}</td>
+                    <td>
+                    <a href='perfil_alumno/{{ datos.7 }}' class="btn btn-primary"  role="button">Ver perfil</a> 
+                    {% if tipo == 1 %}
+                    <a href='editar_alumno/{{ datos.7 }}' class="btn btn-success"  role="button">Editar</a>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal" >Eliminar</button>
+          <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seguro que quieres eliminar?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Selecciona eliminar para eliminar el registro seleccionado.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href='eliminar_alumno/{{ datos.7 }}'>Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+                    </td>
+                	</tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+              {% if tipo == 3 %}
+                  <a href='GeneratePDF_curso/{{ id_curso }}' class="btn btn-secondary" role="button">Generar resumen</a>
+              {% endif %}
+            </div>
+          </div>
+
+</div>
+{% endblock %}
+

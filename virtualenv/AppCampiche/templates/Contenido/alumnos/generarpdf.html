@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+        <title>Nómina de Alumnos</title>
+        <style type="text/css">
+            @page {
+                margin: 1cm;
+                @frame footer {
+                    -pdf-frame-content: footerContent;
+                    bottom: 0cm;
+                    margin-left: 9cm;
+                    margin-right: 9cm;
+                    height: 1cm;
+                }
+            }
+            table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    padding: 10px;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+/*centramos todo el contenido del body*/
+body{width:100%; text-align:center;}
+
+/*volvemos a colocar todo a la izquierda*/
+#contenedor{width:800px; height:600px; margin:auto; text-align:left;}
+        </style>
+    </head>
+    <body>
+     <div id="contenedor">
+    <h1>Lista de Alumnos</h1>
+    <h3>Curso: <font style="text-transform: capitalize;">{{ curso_total }} </font></h3>
+    <h3>Profesor Jefe: <font style="text-transform: capitalize;">{{ nom_total }} </font></h3>
+        <div>
+        <table>
+            <tr>
+                <th>RUT</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO PATERNO</th>
+                <th>APELLIDO MATERNO</th>
+            </tr>
+            {% for item in row %}
+            <tr>
+                <td>{{ item.2 }}-{{ item.3 }}</td>
+                <td>{{ item.4 }}</td>
+                <td>{{ item.5 }}</td>
+                <td>{{ item.6 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+        </div>
+        <br><br><br><br><br><br><br><br>
+        <p>______________________________</p>
+        <p>Firma Profesor Jefe</p>
+    </body>
+</html>

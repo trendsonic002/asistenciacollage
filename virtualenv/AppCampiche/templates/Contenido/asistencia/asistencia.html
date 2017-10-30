@@ -1,0 +1,76 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i>
+            Lista de Alumnos
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                  	<th>Curso</th>
+                    <th>Seccion</th>
+                    <th>Profesor Jefe</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Curso</th>
+                    <th>Seccion</th>
+                    <th>Profesor Jefe</th>
+                    <th>Acción</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                	{% for datos in row3 %}
+                	<tr>
+                	<td>{{ datos.0 }}</td>
+                	<td>{{ datos.1 }}</td>
+                  <td>{{ datos.3 }} {{ datos.4 }}</td>
+                    <td><a href='asistencia_curso/{{ datos.2 }}/' class="btn btn-primary"  role="button">Ver asistencia</a>
+                    <a href='editar_asistencia' class="btn btn-danger"  role="button">Editar asistencia</a>
+                    <a href='GeneratePDF_asistencia/{{ datos.2 }}/' class="btn btn-success"  role="button">Generar resumen</a>
+                    </td>
+                	</tr>
+                	{% endfor %}
+                </tbody>
+                
+              </table>
+            </div>
+            
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                
+            <button class="btn btn-danger" data-toggle="modal" data-target="#correosModal" >Enviar Correos</button>
+            <div class="modal fade" id="correosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seguro que quieres enviar los correos?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Selecciona Aceptar para enviar un comunicado a los apoderados.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="{% url 'enviar_correos' %}">Aceptar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+          </div>
+            <div class="col"></div>
+            </div>
+
+          </div>
+          <div class="card-footer small text-muted">
+          </div>
+</div>
+{% endblock %}

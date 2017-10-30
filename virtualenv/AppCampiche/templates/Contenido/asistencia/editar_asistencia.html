@@ -1,0 +1,56 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+    <h2>Editar Asistencia</h2><br>
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i>
+            Lista de Alumnos
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Nombres</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Nombres</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  {% for datos in row %}
+                  <tr>
+                    <td>{{ datos.0 }}</td>
+                    <td>{{ datos.1 }}</td>
+                    <td>{{ datos.2 }}</td>
+                    <td>{{ datos.3 }}</td>
+                    <td>{{ datos.4 }}</td>
+                    <td>{{ datos.5 }}</td>
+                    <td><a href='edicion_asistencia/{{ datos.6 }}/' class="btn btn-success"  role="button">Cambia Estado</a></td>
+                  </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">
+            Updated yesterday at 11:59 PM
+          </div>
+</div>
+
+
+{% endblock %}

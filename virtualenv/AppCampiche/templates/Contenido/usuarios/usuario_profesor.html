@@ -1,0 +1,80 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+<div class="container">
+  <form action="{% url 'insertar_usuario_profesor' %}" method="POST">
+  {% csrf_token %}
+    <h2>Ingresar Usuario</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Usuario</label>
+          <input type="text" class="form-control" name="nom_usuario" value="{{ nom_usuario }}" readonly>
+        </div>
+      </div>
+
+      <!--  col-md-6   -->
+      <!--  col-md-6   -->
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >Nombre</label>
+          <input type="text" class="form-control" name="nombre" value="{{ nombre }}" readonly>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >Apellido</label>
+          <input type="text" class="form-control" name="apellidos" value="{{ apellidos }}" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" class="form-control" name="contrasenia" value="{{ contrasenia }}" readonly>
+        </div>
+      </div>
+
+      <!--  col-md-6   -->
+      <!--  col-md-6   -->
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >Cargo</label>
+          <input type="text" class="form-control" name="cargo" value="{{ cargo }}" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >Asignar Curso</label>
+          <select name="curso" id="curso">
+            {% for datos in row %}
+            <option value="{{ datos.0 }} {{ datos.1 }}">{{ datos.0 }} {{ datos.1 }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <input type="hidden"  name="nom_usuario" value="{{ nom_usuario }}">
+    <input type="hidden"  name="apellidos" value="{{ apellidos }}">
+    <input type="hidden"  name="contrasenia" value="{{ contrasenia }}">
+    <input type="hidden"  name="cargo" value="{{ cargo }}">
+    <button type="submit" class="btn btn-primary">Ingresar Usuario</button>
+  </form>
+</div>
+{% endblock %}

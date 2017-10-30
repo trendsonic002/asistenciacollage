@@ -1,0 +1,59 @@
+
+CREATE TABLE direccion
+(
+	id_direccion int NOT NULL AUTO_INCREMENT,
+    region int(2) NOT NULL,
+    comuna varchar(100) NOT NULL,
+    ciudad varchar(100) NOT NULL,
+    calle varchar(100) NOT NULL,
+    numero int(8) NOT NULL,
+    PRIMARY KEY(id_direccion)
+)ENGINE=INNODB;
+
+CREATE TABLE persona
+(
+    id_persona int NOT NULL AUTO_INCREMENT,
+    apellido_pat varchar(100) NOT NULL,
+    apellido_mat varchar(100) NOT NULL,
+    rut int(8) NOT NULL,
+    dverificador varchar(1) NOT NULL,
+    sexo varchar(1) NOT NULL,
+    telefono_f int(8) NOT NULL,
+    telefono_m int(8) NOT NULL,
+    fecha_nac date NOT NULL,
+    id_direccion int NOT NULL,
+    FOREIGN KEY (id_direccion) REFERENCES direccion(id_direccion),
+    PRIMARY KEY (id_persona)
+)ENGINE=INNODB;
+
+
+CREATE TABLE asistencia
+(
+    id_asistencia int NOT NULL AUTO_INCREMENT,
+    fecha date NOT NULL,
+    tipo int(1) NOT NULL,
+    PRIMARY KEY (id_asistencia)
+)ENGINE=INNODB;
+
+CREATE TABLE alumno
+(
+    id_alumno int NOT NULL AUTO_INCREMENT,
+    id_persona int NOT NULL,
+    curso varchar(100) NOT NULL,
+    huella varchar(100) NOT NULL,
+    id_asistencia int NOT NULL,
+    estado int(1) NOT NULL DEFAULT '1',
+    FOREIGN KEY (id_persona) REFERENCES persona(id_persona),
+     FOREIGN KEY (id_asistencia) REFERENCES asistencia(id_asistencia),
+    PRIMARY KEY (id_alumno)
+)ENGINE=INNODB;
+
+CREATE TABLE docente 
+(
+	id_docente int NOT NULL AUTO_INCREMENT,
+    id_persona int NOT NULL,
+    cargo int(1) NOT NULL,
+    FOREIGN KEY (id_persona) REFERENCES persona(id_persona),
+    PRIMARY KEY(id_docente)
+)ENGINE=INNODB;
+

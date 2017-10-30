@@ -1,0 +1,47 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i>
+            Lista de Alumnos
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                  	<th>Curso</th>
+                    <th>Seccion</th>
+                    <th>Profesor</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Curso</th>
+                    <th>Seccion</th>
+                    <th>Profesor</th>
+                    <th>Acción</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                	{% for datos in row %}
+                	<tr>
+                		<td>{{ datos.0 }}</td>
+                		<td>{{ datos.1 }}</td>
+                    <td>{{ datos.2 }} {{ datos.3 }}</td>
+                    <td><a href='alumnos_curso/{{ datos.4 }}' class="btn btn-primary"  role="button">Ver alumnos</a>
+                    <a href='GeneratePDF/{{ datos.4 }}' class="btn btn-success"  role="button">Generar nómina</a>
+                    </td>
+
+                	</tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">
+            Updated yesterday at 11:59 PM
+          </div>
+</div>
+{% endblock %}

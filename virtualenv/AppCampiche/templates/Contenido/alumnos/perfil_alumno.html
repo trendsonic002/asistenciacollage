@@ -1,0 +1,97 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+{% for datos in row2 %}
+
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i>
+            Lista de Alumnos
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>Nombres:</td>
+                        <td>{{ datos.1 }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Apellido Paterno:</td>
+                        <td>{{ datos.2 }}</td>
+                      </tr>
+                      <tr>
+                        <td>Apellido Materno:</td>
+                        <td>{{ datos.3 }}</td>
+                      </tr>
+                             <tr>
+                        <td>Rut:</td>
+                        <td>{{ datos.4 }}-{{ datos.5 }}</td>
+                      </tr>
+                        <tr>
+                        <td>Sexo:</td>
+                        <td>{{ datos.6 }}</td>
+                      </tr>
+                      <tr>
+                        <td>Telefono Fijo:</td>
+                        <td>{{ datos.7 }}</td>
+                      </tr>
+                        <td>Telefono Celular:</td>
+                        <td>{{ datos.8 }}</td>
+                        <tr>
+                        <td>Fecha de Nacimiento:</td>
+                        <td>{{ datos.9 }}</td>
+                      </tr>
+                      <tr>
+                        <td>Correo:</td>
+                        <td>{{ datos.10 }}</td>
+                      </tr>
+                      <tr>
+                        <td>Ciudad:</td>
+                        <td>{{ datos.12 }}</td>
+                      </tr>
+                      <tr>
+                        <td>Region:</td>
+                        <td>{{ datos.11 }}</td>
+                      </tr>
+                      <tr>
+                        <td>Comuna:</td>
+                        <td>{{ datos.13 }}</td>
+                      </tr>
+                      <tr>
+                        <td>Calle:</td>
+                        <td>{{ datos.14 }}</td>
+                      </tr>
+                      <tr>
+                        <td>Número:</td>
+                        <td>{{ datos.15 }}</td>
+                      </tr>
+                           {% endfor %}
+                      
+                     
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">
+            Updated yesterday at 11:59 PM
+          </div>
+</div>
+
+{% endblock %}

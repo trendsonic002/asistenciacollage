@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>My Title</title>
+        <style type="text/css">
+            @page {
+                margin: 1cm;
+                @frame footer {
+                    -pdf-frame-content: footerContent;
+                    bottom: 0cm;
+                    margin-left: 9cm;
+                    margin-right: 9cm;
+                    height: 1cm;
+                }
+            }
+            table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    padding: 1px;
+}
+th.nombre{
+    width : 30%;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+/*centramos todo el contenido del body*/
+body{width:100%; text-align:center;}
+
+/*volvemos a colocar todo a la izquierda*/
+#contenedor{width:800px; height:600px; margin:auto; text-align:left;}
+        </style>
+    </head>
+    <body>
+     <div id="contenedor">
+    <h1>Registro de asistencia</h1>
+    <h3>Curso: <font style="text-transform: capitalize;">{{ curso_total }} </font></h3>
+    <h3>Profesor Jefe: <font style="text-transform: capitalize;">{{ nom_total }} </font></h3>
+    <h3>Mes: <font style="text-transform: capitalize;">{{ mes_nom }} </font></h3>
+        <div>
+        <table>
+            <tr>
+                <th class="nombre">Nombre</th>
+                {% for i in loop_times %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for data in row_fechas %}
+            <tr>
+                <td>{{ data.0 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+        </div>
+    </body>
+</html>

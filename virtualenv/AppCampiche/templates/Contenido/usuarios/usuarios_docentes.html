@@ -1,0 +1,47 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i>
+            Lista de Alumnos
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                  	<th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cargo</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cargo</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                	{% for usuarios in row %}
+                	<tr>
+                	<td>{{ usuarios.0 }}</td>
+                  <td>{{ usuarios.1 }}</td>
+                  {% if usuarios.2 == 1 %}
+                  <td>Director</td>
+                  {% elif usuarios.2 == 2 %}
+                  <td>Secretaria</td>
+                  {% elif usuarios.2 == 3 %}
+                  <td>Docente</td>
+                  {% endif %}
+                	</tr>
+                	{% endfor %}
+                </tbody>
+                
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">
+          </div>
+</div>
+{% endblock %}

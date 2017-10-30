@@ -1,0 +1,88 @@
+{% extends 'Inicio/base.html' %}
+
+	{% csrf_token %}
+
+	{% block colegio %}
+	{% for user in usuario %}
+	{{ user.id_establecimiento }}
+	{% endfor %}
+	{% endblock %}
+
+
+	{% block nombre %}
+	{% for user in usuario %}
+		{% if user.tipo == 0 %}
+			{{ user.nombre|upper }}
+			{{ user.apellido_pat|upper }} | INACTIVO
+		{% endif%}
+		{% if user.tipo == 1 %}
+			{{ user.nombre|upper }}
+			{{ user.apellido_pat|upper }} | ADMIN
+		{% endif%}
+		{% if user.tipo == 2 %}
+			{{ user.nombre|upper }}
+			{{ user.apellido_pat|upper }} | SECRETARIA
+		{% endif%}
+		{% if user.tipo == 3 %}
+			{{ user.nombre|upper }}
+			{{ user.apellido_pat|upper }} | DOCENTE
+		{% endif%}
+	{% endfor %}
+	{% endblock %}
+	
+	
+{% block gestionalumnos %}
+	{% for user in usuario %}
+			{% if user.tipo == 1 %}
+				{% include 'Contenido/include/gestionalumnos.html' %}
+			{% endif%}
+			{% if user.tipo == 2 %}
+			{% endif%}
+			{% if user.tipo == 3 %}
+			{% endif%}
+	{% endfor %}
+{% endblock %}
+
+{% block alumnos %}
+	{% for user in usuario %}
+			{% if user.tipo == 0 %}
+			{% endif%}
+			{% if user.tipo == 1 %}
+				{% include 'Contenido/include/alumnos.html' %}
+			{% endif%}
+			{% if user.tipo == 2 %}
+			{% endif%}
+			{% if user.tipo == 3 %}
+				{% include 'Contenido/include/alumnos.html' %}
+			{% endif%}
+	{% endfor %}
+{% endblock %}
+
+{% block asistencia %}
+	{% for user in usuario %}
+			{% if user.tipo == 0 %}
+			{% endif%}
+			{% if user.tipo == 1 %}
+				{% include 'Contenido/include/asistencia.html' %}
+			{% endif%}
+			{% if user.tipo == 2 %}
+			{% endif%}
+			{% if user.tipo == 3 %}
+				{% include 'Contenido/include/asistencia.html' %}
+			{% endif%}
+	{% endfor %}
+{% endblock %}
+
+{% block usuarios %}
+	{% for user in usuario %}
+			{% if user.tipo == 0 %}
+			{% endif%}
+			{% if user.tipo == 1 %}
+				{% include 'Contenido/include/usuarios.html' %}
+			{% endif%}
+			{% if user.tipo == 2 %}
+			{% endif%}
+			{% if user.tipo == 3 %}
+			{% endif%}
+	{% endfor %}
+{% endblock %}

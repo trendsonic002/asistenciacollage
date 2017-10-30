@@ -1,0 +1,85 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Asistencia', 'Cantidad de Alumnos'],
+          ['Presentes',      {% for data in rowpresente %}{{ data.0 }}{% endfor %}],
+          ['Ausentes',      {% for data in rowausente %}{{ data.0 }}{% endfor %}],
+        ]);
+
+        var options = {
+          title: 'Asistencia Diaria'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+     google.charts.load('current', {packages: ['corechart']});
+     function drawChart() {
+   // Define the chart to be drawn.
+   var data = google.visualization.arrayToDataTable([
+      ['Mes', 'Tasa asistencia'],
+      ['Marzo',  86],
+      ['Abril',  85],
+      ['Mayo',  90],
+      ['Junio',  30],
+      ['Julio',  30],
+      ['Agosto',  85],
+      ['Septiembre',  80],
+      ['Octubre',  95],
+      ['Noviembre',  96],
+      ['Diciembre',  88]
+   ]);
+
+   var options = {
+      title: 'Porcentaje %'   
+   }; 
+
+   // Instantiate and draw the chart.
+   var chart = new google.visualization.ColumnChart(document.getElementById('container'));
+   chart.draw(data, options);
+}
+google.charts.setOnLoadCallback(drawChart);    
+   </script>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+        <div class="form-group">
+        <h1>Estadísticas</h1>
+        <br>
+            <table class="table table-bordered" width="100%"  cellspacing="0">
+                  <tr>
+                    <th>Mejor Asistencia</th>
+                    <td>Ingrid Espinoza</td>
+                  </tr>
+                  <tr>
+                    <th>Peor Asistencia</th>
+                    <td>Javier Retamales</td>
+                  </tr>
+                   <tr>
+                  <th>Tasa de Asistencia Mensual</th>
+                  <td>86%</td>
+                  </tr>
+              </table>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+         <div id="piechart" style="width: 900px; height: 500px;"></div>
+        </div>
+      </div>
+      <div id="container" style="width: 900px; height: 500px;"></div>
+      </div>
+    </div>
+{% endblock %}

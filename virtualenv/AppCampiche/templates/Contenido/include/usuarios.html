@@ -1,0 +1,17 @@
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponentsUser" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-wrench"></i>
+              <span class="nav-link-text">
+                Usuarios</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseComponentsUser">
+            {% if user.tipo == 1 %}
+              <li>
+                <a href="/usuarios_docentes">Lista de Usuarios</a>
+              </li>
+               <li>
+                <a href="/ingresar_usuario">Ingresar Usuario</a>
+              </li>
+              {%  endif %}
+            </ul>
+          </li>

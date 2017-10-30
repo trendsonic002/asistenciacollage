@@ -1,0 +1,17 @@
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponentsAlum" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-table"></i>
+              <span class="nav-link-text">
+                Alumnos</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseComponentsAlum">
+              <li>
+                <a href="{% url 'alumnos' %}">Alumnos</a>
+              </li>
+              {% if user.tipo == 1 %}
+              <li>
+                <a href="{% url 'cursos' %}">Cursos</a>
+              </li>
+              {% endif %}
+            </ul>
+          </li>

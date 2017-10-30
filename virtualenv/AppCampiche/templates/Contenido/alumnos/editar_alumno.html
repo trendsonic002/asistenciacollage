@@ -1,0 +1,181 @@
+{% extends 'Contenido/privado.html' %}
+{% block contenido %}
+<div class="container">
+  <form action="{% url 'edicion_alumno' %}" method="POST">
+  {% csrf_token %}
+    <h2>Editar Alumno</h2>
+    <div class="row">
+    {% for datos in row %}
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Rut</label>
+          <input type="text" class="form-control" name="rut"  value='{{ datos.0 }}' readonly>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <label >DV</label>
+          <input type="text" class="form-control" name="dv" value='{{ datos.1 }}' readonly>
+        </div>
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Teléfono fijo</label>
+          <input type="text" class="form-control" name="telefono_f" value="{{ datos.6 }}">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >Nombres</label>
+          <input type="text" class="form-control" name="nombres" value="{{ datos.2 }}">
+        </div>
+
+
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label>Teléfono celular</label>
+          <input type="text" class="form-control" name="telefono_m" value="{{ datos.7 }}">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+    <!--  row   -->
+
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label>Apellido Paterno</label>
+          <input type="text" class="form-control" name="apellido_pat" value="{{ datos.3 }}">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Región</label>
+          <input type="text" class="form-control" name="region" value="{{ datos.9 }}">
+        </div>
+
+      </div>
+      <!--  col-md-6   -->
+    </div>
+    <!--  row   -->
+	<div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Apellido Materno</label>
+          <input type="text" class="form-control" name="apellido_mat" value="{{ datos.4 }}">
+        </div>
+
+
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label>Comuna</label>
+          <input type="text" class="form-control" name="comuna" value="{{ datos.10 }}">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+    <!--  row   -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Sexo</label>
+          <input type="text" class="form-control" name="sexo" value="{{ datos.5 }}" readonly>
+        </div>
+
+
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label>Ciudad</label>
+          <input type="text" class="form-control" name="ciudad" value="{{ datos.11 }}">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+    <!--  row   -->
+     <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >Fecha de Nacimiento</label>
+          <input type="text" class="form-control" name="fecha_nac" value="{{ datos.8 }}" readonly>
+        </div>
+
+
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label >Nombre de Calle</label>
+          <input type="text" class="form-control" name="calle" value="{{ datos.12 }}">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+    <!--  row   -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >Curso</label>
+          <input type="text" class="form-control" name="curso" value="{{ datos.14 }}" readonly>
+        </div>
+
+
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label >Número de Calle</label>
+          <input type="text" class="form-control" name="numero_calle" value="{{ datos.13 }}">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+	
+	<div class="row">
+	<div class="col-md-6">
+        <div class="form-group">
+          <label >Sección</label>
+          <input type="text" class="form-control" name="seccion" value="{{ datos.15 }}" readonly>
+        </div>
+      </div>
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label >Correo</label>
+          <input type="text" class="form-control" name="correo" value="{{ datos.17 }}">
+        </div>
+      </div>
+     </div>
+    <input type="hidden" name="id_perso" value="{{ datos.16 }}">
+    <button type="submit" class="btn btn-primary">Editar</button>
+  </form>
+</div>
+
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,24 @@
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponentsAsis" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-wrench"></i>
+              <span class="nav-link-text">
+                Asistencia</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseComponentsAsis">
+            {% if user.tipo == 1 %}
+              <li>
+                <a href="{% url 'asistencia' %}">Asistencia</a>
+              </li>
+              {% endif %}
+              {% if user.tipo == 3 %}
+              <li>
+                <a href="{% url 'asistencia_micurso' %}">Mi Curso</a>
+              </li>
+              {%  endif %}
+              {% if user.tipo == 3 %}
+              <li>
+                <a href="estadisticas/{{ user.id_administrador }}">Estadísticas</a>
+              </li>
+              {%  endif %}
+            </ul>
+          </li>
